@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Documentation - Typo3 pour commencer</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Typo3 pour commencer</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Accueil</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Documentation</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../about/">About</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../annexes/">Annexes</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../about/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/olympus642/Typo3_pour_commencer">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#documentation">Documentation</a></li>
+        
+            <li><a href="#creation-des-liens-symboliques">Création des liens symboliques</a></li>
+        
+            <li><a href="#suite-de-linstallation">Suite de l'installation</a></li>
+        
+            <li><a href="#creation-de-larchitecture-du-site">Création de l’architecture du site</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="documentation">Documentation</h1>
+<h2 id="creation-des-liens-symboliques">Création des liens symboliques</h2>
+<p>Il est recommandé d’installer séparément la source (le « moteur ») de Typo3 et le site lui-même. Ainsi, il sera plus aisé de faire les mises à jour du moteur sans toucher aux fichiers propres au site.</p>
+<p>Pour ce faire, et à titre d’exemple, on mettra à la racine de son serveur (le dossier <code>public_html</code> ou <code>www</code> ou <code>htdocs</code>), dans un dossier <strong>source</strong> le moteur de Typo3 (c-a-d l'archive zip ou tar.gz que l’on a téléchargée sur le site de Typo3 puis décompressée).<br />
+Voici son contenu :</p>
+<p>[les dossiers sont indiqués en <strong>gras</strong>, les fichiers en <em>italique</em>]</p>
+<ul>
+<li><code>www</code><ul>
+<li><strong>source</strong><ul>
+<li><strong>typo3</strong></li>
+<li><em>_.htaccess</em></li>
+<li><em>ChangeLog</em></li>
+<li><em>composer.json</em></li>
+<li><em>index.php</em></li>
+<li><em>INSTALL.md</em></li>
+<li><em>LICENSE.txt</em></li>
+<li><em>NEWS.md</em></li>
+<li><em>README.md</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ensuite,</p>
+<ul>
+<li>il faudra faire des liens symboliques :<ul>
+<li>vers le répertoire <strong>source</strong></li>
+<li>vers le fichier <em>index.php</em></li>
+<li>vers le répertoire <strong>typo3</strong></li>
+</ul>
+</li>
+<li>et copier le fichier <em>_.htaccess</em> en le transformant en <em>.htaccess</em></li>
+</ul>
+<p>Exemple d’une installation multi-sites avec un site installé à la racine du serveur et un autre dans un dossier spécifique appelé <strong>site2</strong> :</p>
+<p>[les liens symboliques sont en <strong>gras</strong> et suivis d’une flèche →]</p>
+<ul>
+<li><code>www</code><ul>
+<li><strong>source</strong></li>
+<li><strong>typo3_src</strong> → <strong>source</strong></li>
+<li><strong>index.php</strong> → <strong>source</strong>/<em>index.php</em></li>
+<li><strong>typo3</strong> → <strong>source</strong>/<strong>typo3</strong></li>
+<li><em>.htaccess</em></li>
+<li><strong>site2</strong><ul>
+<li><strong>typo3_src</strong> → <strong>../source</strong></li>
+<li><strong>index.php</strong> → <strong>../source</strong>/<em>index.php</em></li>
+<li><strong>typo3</strong> → <strong>../source</strong>/<strong>typo3</strong></li>
+<li><em>.htaccess</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Sur un système du type <code>UNIX</code>, les commandes pour créer les liens symboliques et copier le htaccess sont :</p>
+<ul>
+<li>pour le site à la racine du serveur :</li>
+</ul>
+<pre><code class="bash">    cd www
+    ln -s source typo3_src
+    ln -s typo3_src/index.php index.php
+    ln -s typo3_src/typo3 typo3
+    cp typo3_src/_.htaccess .htaccess
+</code></pre>
+
+<ul>
+<li>pour le « site2 » :</li>
+</ul>
+<pre><code class="bash">    cd www/site2
+    ln -s ../source typo3_src
+    ln -s typo3_src/index.php index.php
+    ln -s typo3_src/typo3 typo3
+    cp typo3_src/_.htaccess .htaccess
+</code></pre>
+
+<p>Pour créer des liens symboliques sur un système Windows ou sur un serveur mutualisé, voir les <a href="../annexes/">annexes</a>.</p>
+<h2 id="suite-de-linstallation">Suite de l'installation</h2>
+<p>Après avoir créé ces liens symboliques, ouvrir dans un navigateur l’URL correspondant au dossier du futur site.<br />
+Exemple, si le dossier en question s’appelle « Test_typo3 » et si on est en local, un URL possible serait :<br />
+<code>http://locahost/Test_typo3</code><br />
+On arrive alors probablement sur le message suivant :</p>
+<p><img alt="Message Installation" src="../img/message_install.png" /></p>
+<p>Il faut donc créer un fichier vide « FIRST_INSTALL » dans le répertoire (le nom de fichier ne doit pas avoir d’extension, par exemple du type .txt) pour pouvoir continuer l’installation.</p>
+<p>Eventuellement, régler les droits pour permettre l’écriture dans ce répertoire, si un message de ce genre apparaît :</p>
+<p><img alt="Répertoire non inscriptible" src="../img/message_writable.png" /></p>
+<p><a name="etape5">A l’étape 5</a> de l’installation, on ne coche pas la case permettant de télécharger une liste de distributions pré-configurées :</p>
+<p><img alt="Distributions pré-configurées" src="../img/distrib_preconf.png" /></p>
+<p>Ainsi, on partira réellement de « zéro ».</p>
+<h2 id="creation-de-larchitecture-du-site">Création de l’architecture du site</h2>
+<p>Lorsqu’on se loggue pour la première fois dans l’interface administrateur (le « backend »), le nom du site entré à l’étape 4 de l’installation :</p>
+<p><img alt="Nom du site" src="../img/site_name.png" /></p></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
