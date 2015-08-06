@@ -1,0 +1,10 @@
+site_name: Typo3 pour commencer
+repo_url: https://github.com/olympus642/
+repo_name: GitHub
+pages:
+- Accueil: index.md
+- Documentation: doc.md
+- About: about.md
+- Annexes: annexes.md
+markdown_extensions:
+    - fenced_code
